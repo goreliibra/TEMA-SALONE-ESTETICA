@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Estetica Modenese | Parrucchiere & Estetica a Modena</title>
+<meta name="description" content="Estetica Modenese (E&M) — parrucchiere unisex ed estetica a Modena. Taglio, colore, balayage, manicure, epilazione, massaggi. Prenota online o su WhatsApp." />
+<meta name="keywords" content="estetica Modena, parrucchiere Modena, centro estetico Modena, manicure Modena, epilazione Modena, balayage Modena, taglio uomo Modena, taglio donna Modena, massaggi Modena" />
+<meta name="theme-color" content="#1E1A16" />
+<link rel="canonical" href="https://www.esteticamodenese.it/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Estetica Modenese — Parrucchiere & Estetica a Modena" />
+<meta property="og:description" content="Capelli, colore, manicure, epilazione e massaggi. Prenota online o su WhatsApp." />
+<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+
+<!-- Structured data: HairSalon / BeautySalon -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["HairSalon","BeautySalon"],
+  "name": "Estetica Modenese",
+  "alternateName": "E&M Estetica Modenese",
+  "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+  "url": "https://www.esteticamodenese.it/",
+  "telephone": "+393314245928",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via P. Giardini 386",
+    "addressLocality": "Modena",
+    "postalCode": "41125",
+    "addressRegion": "MO",
+    "addressCountry": "IT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 44.6200, "longitude": 10.9170 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/esteticamodenese/"]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site" id="header">
+  <div class="wrap">
+    <a href="#home" class="brand" aria-label="Estetica Modenese — Home">
+      <svg class="logo-em" viewBox="0 0 100 100" role="img" aria-label="Estetica Modenese">
+        <defs>
+          <linearGradient id="emRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ff7a18"/><stop offset="18%" stop-color="#ff2d55"/>
+            <stop offset="40%" stop-color="#c644fc"/><stop offset="60%" stop-color="#5856d6"/>
+            <stop offset="80%" stop-color="#34aadc"/><stop offset="100%" stop-color="#ffcd00"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="48" fill="none" stroke="url(#emRing)" stroke-width="4"/>
+        <circle cx="50" cy="50" r="44" fill="#0d0d0d"/>
+        <text x="50" y="50" text-anchor="middle" fill="#fff" font-family="'Cormorant Garamond',serif" font-size="30" font-weight="700" letter-spacing="-1">E&amp;M</text>
+        <line x1="32" y1="59" x2="68" y2="59" stroke="#fff" stroke-width="1" opacity=".55"/>
+        <text x="50" y="70" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">ESTETICA</text>
+        <text x="50" y="81" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">MODENESE</text>
+      </svg>
+    </a>
+
+    <nav class="nav" aria-label="Primaria">
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#services" data-i18n="nav_services">Servizi e Prezzi</a>
+      <a href="#team" data-i18n="nav_team">Team</a>
+      <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+      <a href="#reviews" data-i18n="nav_reviews">Recensioni</a>
+      <a href="#contact" data-i18n="nav_contact">Contatti</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang" role="group" aria-label="Lingua">
+        <button data-lang="it" class="active">IT</button>
+        <button data-lang="tr">TR</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#book" class="btn btn-gold btn-sm btn-book-header" data-i18n="cta_book_now">Prenota Ora</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-controls="drawer"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-panel">
+    <a href="#home" data-i18n="nav_home">Home</a>
+    <a href="#services" data-i18n="nav_services">Servizi e Prezzi</a>
+    <a href="#team" data-i18n="nav_team">Team</a>
+    <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+    <a href="#reviews" data-i18n="nav_reviews">Recensioni</a>
+    <a href="#contact" data-i18n="nav_contact">Contatti</a>
+    <a href="#book" class="btn btn-gold" data-i18n="cta_book_now">Prenota Ora</a>
+  </div>
+</div>
+
+<!-- APP -->
+<main id="app" role="main"></main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg class="logo-em" viewBox="0 0 100 100" role="img" aria-label="Estetica Modenese">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="url(#emRing)" stroke-width="4"/>
+            <circle cx="50" cy="50" r="44" fill="#0d0d0d"/>
+            <text x="50" y="50" text-anchor="middle" fill="#fff" font-family="'Cormorant Garamond',serif" font-size="30" font-weight="700" letter-spacing="-1">E&amp;M</text>
+            <line x1="32" y1="59" x2="68" y2="59" stroke="#fff" stroke-width="1" opacity=".55"/>
+            <text x="50" y="70" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">ESTETICA</text>
+            <text x="50" y="81" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">MODENESE</text>
+          </svg>
+        </div>
+        <p data-i18n="foot_about">Estetica e parrucchiere unisex di fiducia a Modena.</p>
+      </div>
+      <div>
+        <h5 data-i18n="foot_quick">Link rapidi</h5>
+        <ul>
+          <li><a href="#services" data-i18n="nav_services">Servizi e Prezzi</a></li>
+          <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+          <li><a href="#reviews" data-i18n="nav_reviews">Recensioni</a></li>
+          <li><a href="#book" data-i18n="nav_book">Prenota</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i18n="foot_contact">Contatti</h5>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Estetica%20Modenese%20Via%20Giardini%20386%20Modena" target="_blank" rel="noopener">Via P. Giardini 386, Modena</a></li>
+          <li><a href="tel:+393314245928">+39 331 424 5928</a></li>
+          <li><a href="https://www.instagram.com/esteticamodenese/" target="_blank" rel="noopener">@esteticamodenese</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© <span id="yr"></span> Estetica Modenese · <span data-i18n="foot_rights">Tutti i diritti riservati</span> · <span data-i18n="foot_demo">Demo realizzata per presentazione</span></div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BOOK BAR -->
+<div class="mobile-bar"><a href="#book" class="btn btn-gold" data-i18n="cta_book_now">Prenota Ora</a></div>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.4.7.7-3.3-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C6.2 9.6 10.6 5.2 16 5.2S25.8 9.6 25.8 15 21.4 24.8 16 24.8zm5.5-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.1 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+</a>
+
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function(){
+    var wa = document.getElementById('waFloat');
+    function up(){ wa.href = "https://wa.me/" + SALON.whatsapp + "?text=" + encodeURIComponent(t('wa_intro')); }
+    up(); document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(up, 0); }); });
+  })();
+</script>
+</body>
+</html>
