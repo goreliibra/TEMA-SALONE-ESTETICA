@@ -222,15 +222,20 @@ main{min-height:60vh}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .acc-item.open .acc-body{max-height:2600px}
 .acc-list{padding:0 22px 12px}
-.acc-list .price-row{padding:13px 0;border-bottom:1px dashed var(--line)}
+/* 3-column row: name (flex) · price (auto) · book button (fixed) — the button
+   column is identical for EVERY service so all rows align perfectly. */
+.acc-list .price-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;column-gap:16px;
+  padding:13px 0;border-bottom:1px dashed var(--line)}
 .acc-list .price-row:last-child{border-bottom:none}
-.acc-list .pn{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.acc-list .pn{min-width:0}
 .acc-list .pn b{font-family:'Jost';font-size:.96rem;font-weight:500}
-.acc-list .row-book{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
-  color:var(--gold-deep);border:1px solid var(--gold);border-radius:50px;padding:3px 12px;transition:.2s;white-space:nowrap}
-.acc-list .row-book:hover{background:var(--gold);color:#fff}
-.acc-list .pp{font-family:'Cormorant Garamond';font-size:1.35rem;color:var(--gold-deep);font-weight:600;white-space:nowrap}
+.acc-list .pp{font-family:'Cormorant Garamond';font-size:1.35rem;color:var(--gold-deep);font-weight:600;white-space:nowrap;text-align:right}
 .acc-list .pp small{font-family:'Jost';font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-right:5px}
+.acc-list .pa{display:flex;justify-content:flex-end;flex:0 0 auto}
+.acc-list .row-book{display:inline-flex;align-items:center;justify-content:center;font-size:.68rem;letter-spacing:.08em;
+  text-transform:uppercase;font-weight:600;color:var(--gold-deep);border:1px solid var(--gold);border-radius:50px;
+  padding:5px 14px;transition:.2s;white-space:nowrap;cursor:pointer}
+.acc-list .row-book:hover{background:var(--gold);color:#fff}
 
 /* booking wizard: grouped options */
 .opt-group{margin-bottom:22px}
@@ -439,6 +444,12 @@ footer ul a:hover{color:#E7CFA1}
   .stepper .st{min-width:60px;font-size:0}
   .stepper .st .num{font-size:.74rem}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
+  /* price rows on phones: name on top, then price + identical book button on a
+     second row (button always bottom-right) — perfectly aligned on iOS/Android */
+  .acc-list .price-row{grid-template-columns:1fr auto;grid-template-areas:"name name" "price book";row-gap:9px;column-gap:12px}
+  .acc-list .pn{grid-area:name}
+  .acc-list .pp{grid-area:price;text-align:left;align-self:center}
+  .acc-list .pa{grid-area:book}
   /* contact map pin on small phones: left, just below Google's card; compact,
      never overflow. Hide the city line to save width. */
   .map-pin{top:140px;left:10px;right:auto;bottom:auto;max-width:calc(100% - 20px);gap:7px;padding:6px 9px}

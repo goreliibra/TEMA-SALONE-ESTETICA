@@ -184,11 +184,18 @@
     return s ? s.id : null;
   }
   function accRow(cat, it) {
+    // EVERY service row gets the same booking button. If the item is wired to
+    // the booking engine (book:true) we preselect it; otherwise the button just
+    // opens the booking flow (user picks the service in step 1). Same look,
+    // same position, same action for all rows — no service without a button.
     const sid = it.book ? serviceIdFor(cat, it) : null;
-    const btn = sid ? `<a href="#book" class="row-book" data-book-service="${sid}">${t("prenota_short")}</a>` : "";
+    const btn = sid
+      ? `<a href="#book" class="row-book" data-book-service="${sid}">${t("prenota_short")}</a>`
+      : `<a href="#book" class="row-book">${t("prenota_short")}</a>`;
     return `<div class="price-row">
-      <div class="pn"><b>${L(it.name)}</b>${btn}</div>
+      <div class="pn"><b>${L(it.name)}</b></div>
       <div class="pp">${formatPrice(it.price)}</div>
+      <div class="pa">${btn}</div>
     </div>`;
   }
   function popularCards() {
