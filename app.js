@@ -102,6 +102,8 @@
       </div>
     </div></section>
 
+    ${googleReviews()}
+
     ${faqSection()}
 
     ${locationSection()}
@@ -153,6 +155,7 @@
 
   views.reviews = () => `
     <div class="wrap page-head"><div class="section-head center reveal in"><span class="eyebrow">★★★★★</span><h2>${t("sec_reviews")}</h2></div></div>
+    ${googleReviews()}
     <section class="section tight"><div class="wrap">
       <div class="grid grid-2 reveal">${REVIEWS.map(revCard).join("")}</div>
       <div class="rev-actions">
@@ -257,6 +260,29 @@
     return `<section class="section beige"><div class="wrap">
       <div class="section-head center reveal"><span class="eyebrow">${t("nav_contact")}</span><h2>${t("sec_location")}</h2></div>
       ${locationInner()}
+    </div></section>`;
+  }
+  /* Google reviews block: official multi-colour "G", rating, count + buttons.
+     Data lives in CONFIG (GOOGLE_RATING / GOOGLE_REVIEWS_COUNT / GOOGLE_REVIEW_URL). */
+  const googleG = `<svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>`;
+  function googleReviews() {
+    const C = window.CONFIG || {};
+    const rating = C.GOOGLE_RATING, count = C.GOOGLE_REVIEWS_COUNT;
+    if (!rating) return "";
+    const url = C.GOOGLE_REVIEW_URL || SALON.mapsLink;
+    const full = Math.floor(rating), half = rating - full >= 0.5;
+    const starRow = "★".repeat(full) + (half ? "⯪" : "") + "☆".repeat(5 - full - (half ? 1 : 0));
+    const ratingTxt = String(rating).replace(".", ",");
+    return `<section class="section beige"><div class="wrap">
+      <div class="g-rev-card reveal">
+        <div class="g-rev-head">${googleG}<div><h3>${t("g_reviews_title")}</h3>
+          <div class="g-rev-score"><b>${ratingTxt}</b><span class="g-stars">${starRow}</span>
+          <small>${count} ${t("g_reviews_count")} ${t("g_reviews_based")}</small></div></div></div>
+        <div class="g-rev-actions">
+          <a href="${url}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">${t("g_reviews_read")}</a>
+          <a href="${url}" target="_blank" rel="noopener" class="btn btn-gold btn-sm">${t("g_reviews_write")}</a>
+        </div>
+      </div>
     </div></section>`;
   }
   /* FAQ — long-tail Q&A (data: FAQ in data.js). Native <details> = accessible,

@@ -95,6 +95,13 @@
   if (C.EMAIL) local.email = C.EMAIL;
   if (C.GEO) local.geo = { "@type": "GeoCoordinates", "latitude": C.GEO.lat, "longitude": C.GEO.lng };
   if (sameAs.length) local.sameAs = sameAs;
+  if (C.GOOGLE_RATING) {
+    local.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": C.GOOGLE_RATING,
+      "reviewCount": C.GOOGLE_REVIEWS_COUNT || 1
+    };
+  }
   addJsonLd(local);
 
   /* ---- FAQPage JSON-LD (from FAQ in data.js) ---- */

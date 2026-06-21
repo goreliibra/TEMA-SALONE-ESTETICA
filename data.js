@@ -43,6 +43,13 @@ const CONFIG = {
   // --- Social profiles for schema sameAs (add Facebook/TikTok etc. if any) ---
   SOCIAL: ["https://www.instagram.com/esteticamodenese/"],
 
+  // --- Google reviews (shown in the "Recensioni Google" block) ---
+  GOOGLE_RATING: 4.6,        // average stars on Google
+  GOOGLE_REVIEWS_COUNT: 94,  // number of reviews on Google
+  // Link to your Google Business page (write/read reviews). If empty, a Google
+  // Maps search for the business name is used.
+  GOOGLE_REVIEW_URL: "",
+
   // --- Branding ---
   HERO_IMAGE: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80"
 };
