@@ -14,9 +14,9 @@ const I18N = {
     cta_book_now: "Prenota Ora", cta_whatsapp: "WhatsApp",
 
     // hero
-    hero_title: "Il tuo salone di fiducia per taglio, colore e styling",
-    hero_sub: "Estetica Modenese è un salone di parrucchiere ed estetica unisex a Modena, in Via P. Giardini 386. Prenota online o su WhatsApp e scegli il professionista più adatto a te.",
-    hero_cta1: "Prenota Online", hero_cta2: "Prenota su WhatsApp",
+    hero_title: "La tua bellezza, la nostra passione",
+    hero_sub: "Prenota il tuo appuntamento in pochi secondi. Parrucchiere ed estetica unisex a Modena, in Via P. Giardini 386.",
+    hero_cta1: "Prenota Ora", hero_cta2: "WhatsApp",
     hero_badge: "Parrucchiere Unisex a Modena",
 
     // quick booking
@@ -109,9 +109,9 @@ const I18N = {
     nav_gallery: "Galeri", nav_reviews: "Yorumlar", nav_book: "Randevu", nav_contact: "İletişim",
     cta_book_now: "Hemen Randevu", cta_whatsapp: "WhatsApp",
 
-    hero_title: "Kesim, renk ve şekillendirme için güvenilir salonunuz",
-    hero_sub: "Randevunu online ya da WhatsApp’tan al, sana en uygun uzmanı seç.",
-    hero_cta1: "Online Randevu", hero_cta2: "WhatsApp’tan Randevu",
+    hero_title: "Güzelliğin, bizim tutkumuz",
+    hero_sub: "Randevunu saniyeler içinde al. Modena’da unisex kuaför ve güzellik — Via P. Giardini 386.",
+    hero_cta1: "Hemen Randevu", hero_cta2: "WhatsApp",
     hero_badge: "Modena’da Unisex Kuaför",
 
     quick_title: "Hızlı randevu",
@@ -193,9 +193,9 @@ const I18N = {
     nav_gallery: "Gallery", nav_reviews: "Reviews", nav_book: "Book", nav_contact: "Contact",
     cta_book_now: "Book Now", cta_whatsapp: "WhatsApp",
 
-    hero_title: "Your trusted salon for cut, colour and styling",
-    hero_sub: "Book your appointment online or on WhatsApp and choose the professional that suits you best.",
-    hero_cta1: "Book Online", hero_cta2: "Book on WhatsApp",
+    hero_title: "Your beauty, our passion",
+    hero_sub: "Book your appointment in seconds. Unisex hair & beauty in Modena — Via P. Giardini 386.",
+    hero_cta1: "Book Now", hero_cta2: "WhatsApp",
     hero_badge: "Unisex Hair Salon in Modena",
 
     quick_title: "Quick booking",

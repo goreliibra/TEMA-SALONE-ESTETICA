@@ -51,7 +51,12 @@ const CONFIG = {
   GOOGLE_REVIEW_URL: "",
 
   // --- Branding ---
-  HERO_IMAGE: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80"
+  HERO_IMAGE: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80",
+  // Premium VIDEO hero (5–8s loop, autoplay+muted). Leave "" to keep the photo.
+  // When you have a clip: optimise it (~2–4 MB mp4), put it in the project as
+  // hero.mp4, then set HERO_VIDEO: "hero.mp4". The poster shows instantly while
+  // the video loads, and on devices that block autoplay the poster stays.
+  HERO_VIDEO: ""   // e.g. "hero.mp4"
 };
 
 /* ---- Salon / LocalBusiness info (derived from CONFIG — do not edit by hand) ---- */

@@ -49,15 +49,29 @@
   /* ---------------- VIEWS ---------------- */
   const views = {};
 
+  /* Hero background: premium looping video when CONFIG.HERO_VIDEO is set
+     (autoplay, muted, loop, inline, mobile-friendly, with the photo as poster
+     + fallback). When empty, the CSS photo background is used as before. */
+  function heroMedia() {
+    const C = window.CONFIG || {};
+    if (!C.HERO_VIDEO) return "";
+    return `<video class="hero-video" autoplay muted loop playsinline preload="auto"
+      poster="${C.HERO_IMAGE || ""}">
+      <source src="${C.HERO_VIDEO}" type="video/mp4">
+    </video>`;
+  }
+
   views.home = () => `
-    <section class="hero">
+    <section class="hero${(window.CONFIG && CONFIG.HERO_VIDEO) ? ' has-video' : ''}">
+      ${heroMedia()}
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="wrap"><div class="hero-inner reveal in">
         <span class="eyebrow">${L(SALON.tagline)}</span>
         <h1>${t("hero_title")}</h1>
         <p>${t("hero_sub")}</p>
         <div class="hero-actions">
           <a href="#book" class="btn btn-gold">${t("hero_cta1")}</a>
-          <a href="${defaultWa()}" target="_blank" rel="noopener" class="btn btn-wa">${t("hero_cta2")}</a>
+          <a href="${defaultWa()}" target="_blank" rel="noopener" class="btn btn-wa">${icon("message-square")} ${t("hero_cta2")}</a>
         </div>
       </div></div>
     </section>
