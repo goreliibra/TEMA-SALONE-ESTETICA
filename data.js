@@ -3,27 +3,73 @@
    Single source of truth. Backend-ready (same shape can come from an API).
    ========================================================================= */
 
-/* ---- Salon / LocalBusiness info ---- */
+/* ┌───────────────────────────────────────────────────────────────────────┐
+   │  ★★★  CONFIG — EDIT THIS BLOCK TO REBRAND FOR A NEW CLIENT  ★★★         │
+   │                                                                         │
+   │  Change ONLY the values below to point the whole site (every meta tag,  │
+   │  JSON-LD schema, canonical URL, phone/WhatsApp link, map and footer)    │
+   │  at a new business. Nothing else in this file needs to change for the   │
+   │  business identity. Services/prices live in LISTINO further down;       │
+   │  team in TEAM; reviews in REVIEWS; copy/translations in i18n.js.        │
+   │                                                                         │
+   │  When you connect a real domain (e.g. esteticamodenese.it) just set     │
+   │  SITE_DOMAIN below — all canonical/OG/schema URLs update automatically. │
+   └───────────────────────────────────────────────────────────────────────┘ */
+const CONFIG = {
+  // --- Identity ---
+  SITE_DOMAIN: "https://www.esteticamodenese.it",   // no trailing slash; full origin used for canonical/OG/schema
+  BUSINESS_NAME: "Estetica Modenese",
+  BUSINESS_SHORT: "E&M",
+  BUSINESS_TYPE: ["HairSalon", "BeautySalon"],       // schema.org type(s)
+  PRICE_RANGE: "€€",
+
+  // --- Address (keep identical everywhere = consistent NAP) ---
+  ADDRESS_LINE: "Via P. Giardini 386",
+  CITY: "Modena",
+  ZIP: "41125",
+  PROVINCE: "MO",                                    // province / region code
+  COUNTRY: "Italia",
+  COUNTRY_CODE: "IT",
+  GEO: { lat: 44.6200, lng: 10.9170 },
+
+  // --- Contact ---
+  PHONE: "+39 331 424 5928",                         // display format
+  PHONE_HREF: "+393314245928",                       // tel: link (+ and digits)
+  WHATSAPP: "393314245928",                          // digits only, no +
+  EMAIL: "",                                          // optional, "" if none
+  INSTAGRAM: "@esteticamodenese",
+  INSTAGRAM_URL: "https://www.instagram.com/esteticamodenese/",
+
+  // --- Social profiles for schema sameAs (add Facebook/TikTok etc. if any) ---
+  SOCIAL: ["https://www.instagram.com/esteticamodenese/"],
+
+  // --- Branding ---
+  HERO_IMAGE: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80"
+};
+
+/* ---- Salon / LocalBusiness info (derived from CONFIG — do not edit by hand) ---- */
+const _addrQuery = encodeURIComponent(`${CONFIG.BUSINESS_NAME}, ${CONFIG.ADDRESS_LINE}, ${CONFIG.CITY}`);
+const _destQuery = encodeURIComponent(`${CONFIG.ADDRESS_LINE}, ${CONFIG.CITY}`);
 const SALON = {
-  name: "Estetica Modenese",
-  short: "E&M",
+  name: CONFIG.BUSINESS_NAME,
+  short: CONFIG.BUSINESS_SHORT,
   tagline: { it: "Estetica & Parrucchieri Unisex · Modena", tr: "Güzellik & Unisex Kuaför · Modena", en: "Beauty & Unisex Hair · Modena" },
-  addressLine: "Via P. Giardini 386",
-  city: "Modena",
-  zip: "41125",
-  province: "MO",
-  country: "Italia",
-  phone: "+39 331 424 5928",
-  phoneHref: "+393314245928",
-  whatsapp: "393314245928",                 // digits only, no +
-  email: "",                                 // (non fornita)
-  instagram: "@esteticamodenese",
-  instagramUrl: "https://www.instagram.com/esteticamodenese/",
-  // Google Maps
-  mapsEmbed: "https://maps.google.com/maps?q=Estetica%20Modenese%2C%20Via%20Giardini%20386%2C%20Modena&t=&z=15&ie=UTF8&iwloc=&output=embed",
-  mapsLink: "https://www.google.com/maps/search/?api=1&query=Estetica%20Modenese%20Via%20Giardini%20386%20Modena",
-  directions: "https://www.google.com/maps/dir/?api=1&destination=Via%20P.%20Giardini%20386%2C%20Modena",
-  geo: { lat: 44.6200, lng: 10.9170 }
+  addressLine: CONFIG.ADDRESS_LINE,
+  city: CONFIG.CITY,
+  zip: CONFIG.ZIP,
+  province: CONFIG.PROVINCE,
+  country: CONFIG.COUNTRY,
+  phone: CONFIG.PHONE,
+  phoneHref: CONFIG.PHONE_HREF,
+  whatsapp: CONFIG.WHATSAPP,                  // digits only, no +
+  email: CONFIG.EMAIL,
+  instagram: CONFIG.INSTAGRAM,
+  instagramUrl: CONFIG.INSTAGRAM_URL,
+  // Google Maps (built from the address above)
+  mapsEmbed: `https://maps.google.com/maps?q=${_addrQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`,
+  mapsLink: `https://www.google.com/maps/search/?api=1&query=${_addrQuery}`,
+  directions: `https://www.google.com/maps/dir/?api=1&destination=${_destQuery}`,
+  geo: CONFIG.GEO
 };
 
 /* ---- Opening hours (0=Sun … 6=Sat). Aperti tutti i giorni. ---- */
@@ -48,7 +94,7 @@ const SLOT_STEP_MIN = 45;    // appuntamenti ogni 45 minuti
    ========================================================================= */
 const LISTINO = [
   {
-    id: "capelli-donna", icon: "💇‍♀️",
+    id: "capelli-donna", icon: "scissors",
     label: { it: "Capelli · Donna", tr: "Saç · Kadın", en: "Hair · Women" },
     items: [
       { name: { it: "Taglio", tr: "Kesim", en: "Cut" }, price: "da €20", book: true, duration: 45 },
@@ -86,7 +132,7 @@ const LISTINO = [
     ]
   },
   {
-    id: "capelli-uomo", icon: "💈",
+    id: "capelli-uomo", icon: "scissors",
     label: { it: "Capelli · Uomo", tr: "Saç · Erkek", en: "Hair · Men" },
     items: [
       { name: { it: "Taglio", tr: "Kesim", en: "Cut" }, price: "da €15", book: true, duration: 30 },
@@ -104,7 +150,7 @@ const LISTINO = [
     ]
   },
   {
-    id: "epilazione", icon: "🪒",
+    id: "epilazione", icon: "sparkles",
     label: { it: "Epilazione / Ceretta", tr: "Epilasyon / Ağda", en: "Waxing / Hair Removal" },
     items: [
       { name: { it: "Sopracciglia Filo / Ceretta", tr: "Kaş İp / Ağda", en: "Eyebrows · Threading / Wax" }, price: "€7", book: true, duration: 15 },
@@ -127,7 +173,7 @@ const LISTINO = [
     ]
   },
   {
-    id: "manicure", icon: "💅",
+    id: "manicure", icon: "hand",
     label: { it: "Manicure", tr: "Manikür", en: "Manicure" },
     items: [
       { name: { it: "Manicure Curativo", tr: "Bakım Manikürü", en: "Treatment Manicure" }, price: "€12", book: true, duration: 30 },
@@ -143,7 +189,7 @@ const LISTINO = [
     ]
   },
   {
-    id: "pedicure", icon: "🦶",
+    id: "pedicure", icon: "footprints",
     label: { it: "Pedicure", tr: "Pedikür", en: "Pedicure" },
     items: [
       { name: { it: "Pedicure Curativo", tr: "Bakım Pedikürü", en: "Treatment Pedicure" }, price: "€23", book: true, duration: 45 },
@@ -156,7 +202,7 @@ const LISTINO = [
     ]
   },
   {
-    id: "massaggi", icon: "💆‍♀️",
+    id: "massaggi", icon: "flower",
     label: { it: "Massaggi", tr: "Masaj", en: "Massage" },
     items: [
       { name: { it: "Massaggio Totale Estetico Rilassante", tr: "Tüm Vücut Rahatlatıcı Masaj", en: "Full Relaxing Massage" }, price: "€45", book: true, duration: 60 },
@@ -232,18 +278,18 @@ const EXISTING_BOOKINGS = [
    clean labelled tile (so a wrong/broken image is never shown). ---- */
 const GALLERY_CATS = ["all", "capelli", "colore", "manicure", "sopracciglia", "epilazione", "massaggi"];
 const GALLERY = [
-  { cat: "capelli",      icon: "💇‍♀️", src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80", alt: { it: "Taglio e piega", tr: "Kesim ve fön", en: "Cut & blow-dry" } },
-  { cat: "colore",       icon: "🎨", src: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=700&q=80", alt: { it: "Colore capelli", tr: "Saç boyası", en: "Hair colour" } },
-  { cat: "manicure",     icon: "💅", src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80", alt: { it: "Manicure", tr: "Manikür", en: "Manicure" } },
-  { cat: "massaggi",     icon: "💆‍♀️", src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80", alt: { it: "Massaggio rilassante", tr: "Rahatlatıcı masaj", en: "Relaxing massage" } },
-  { cat: "capelli",      icon: "💈", src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80", alt: { it: "Taglio uomo", tr: "Erkek kesimi", en: "Men's cut" } },
-  { cat: "sopracciglia", icon: "👁️", src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80", alt: { it: "Sopracciglia", tr: "Kaş", en: "Brows" } },
-  { cat: "manicure",     icon: "💅", src: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80", alt: { it: "Nail art", tr: "Nail art", en: "Nail art" } },
-  { cat: "epilazione",   icon: "✨", src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80", alt: { it: "Trattamento viso", tr: "Yüz bakımı", en: "Facial treatment" } },
-  { cat: "colore",       icon: "🖌️", src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=700&q=80", alt: { it: "Riflessi e schiariture", tr: "Açılmalar", en: "Highlights" } },
-  { cat: "massaggi",     icon: "🌿", src: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=700&q=80", alt: { it: "Massaggio viso", tr: "Yüz masajı", en: "Face massage" } },
-  { cat: "capelli",      icon: "💇‍♀️", src: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=700&q=80", alt: { it: "Styling donna", tr: "Kadın şekillendirme", en: "Women's styling" } },
-  { cat: "manicure",     icon: "💎", src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=700&q=80", alt: { it: "Semipermanente", tr: "Kalıcı oje", en: "Gel polish" } }
+  { cat: "capelli",      icon: "scissors",   src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80", alt: { it: "Taglio e piega", tr: "Kesim ve fön", en: "Cut & blow-dry" } },
+  { cat: "colore",       icon: "droplet",    src: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=700&q=80", alt: { it: "Colore capelli", tr: "Saç boyası", en: "Hair colour" } },
+  { cat: "manicure",     icon: "hand",       src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80", alt: { it: "Manicure", tr: "Manikür", en: "Manicure" } },
+  { cat: "massaggi",     icon: "flower",     src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80", alt: { it: "Massaggio rilassante", tr: "Rahatlatıcı masaj", en: "Relaxing massage" } },
+  { cat: "capelli",      icon: "scissors",   src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80", alt: { it: "Taglio uomo", tr: "Erkek kesimi", en: "Men's cut" } },
+  { cat: "sopracciglia", icon: "eye",        src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80", alt: { it: "Sopracciglia", tr: "Kaş", en: "Brows" } },
+  { cat: "manicure",     icon: "hand",       src: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80", alt: { it: "Nail art", tr: "Nail art", en: "Nail art" } },
+  { cat: "epilazione",   icon: "sparkles",   src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80", alt: { it: "Trattamento viso", tr: "Yüz bakımı", en: "Facial treatment" } },
+  { cat: "colore",       icon: "droplet",    src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=700&q=80", alt: { it: "Riflessi e schiariture", tr: "Açılmalar", en: "Highlights" } },
+  { cat: "massaggi",     icon: "flower",     src: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=700&q=80", alt: { it: "Massaggio viso", tr: "Yüz masajı", en: "Face massage" } },
+  { cat: "capelli",      icon: "scissors",   src: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=700&q=80", alt: { it: "Styling donna", tr: "Kadın şekillendirme", en: "Women's styling" } },
+  { cat: "manicure",     icon: "gem",        src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=700&q=80", alt: { it: "Semipermanente", tr: "Kalıcı oje", en: "Gel polish" } }
 ];
 
 /* ---- Reviews ---- */
@@ -258,7 +304,39 @@ const REVIEWS = [
     text: { it: "Taglio e piega sempre perfetti. Consigliatissimo!", tr: "Kesim ve fön her zaman kusursuz. Kesinlikle tavsiye!", en: "Cut and blow-dry always perfect. Highly recommended!" } }
 ];
 
+/* ---- FAQ (Italian) — natural long-tail questions people ask AI/Google.
+   Answers are short and quotable (front-loaded) for AI retrieval.
+   Used BOTH for the visible FAQ section and the FAQPage JSON-LD. ---- */
+const FAQ = [
+  {
+    q: "Quanto costa il taglio uomo a Modena?",
+    a: "Il taglio uomo da Estetica Modenese parte da 15 €. Taglio + shampoo da 17 €, mentre il pacchetto completo (taglio, barba, sopracciglia, shampoo e maschera) è 40 €."
+  },
+  {
+    q: "Dove fare il balayage a Modena?",
+    a: "Puoi fare il balayage da Estetica Modenese, in Via P. Giardini 386 a Modena. Il balayage parte da 80 €; offriamo anche méches, colpi di luce e Airtouch."
+  },
+  {
+    q: "Serve prenotare?",
+    a: "La prenotazione è consigliata ma non obbligatoria. Puoi prenotare online dal sito o su WhatsApp al +39 331 424 5928, scegliendo servizio, operatore, data e orario."
+  },
+  {
+    q: "Quali sono gli orari di Estetica Modenese?",
+    a: "Siamo aperti tutti i giorni: dal lunedì al sabato 09:00–20:00 e la domenica 10:00–18:00."
+  },
+  {
+    q: "Fate manicure e pedicure?",
+    a: "Sì, facciamo manicure e pedicure. Manicure curativo da 12 €, semipermanente 32 €, ricostruzione unghie da 59 €; pedicure curativo 23 € e pedicure con semipermanente 35 €."
+  },
+  {
+    q: "Fate epilazione e ceretta?",
+    a: "Sì, offriamo epilazione e ceretta per donna e uomo: dalle sopracciglia col filo (7 €) ai pacchetti completi corpo. Disponibili anche viso, gambe, inguine e schiena."
+  }
+];
+
 /* expose */
+window.CONFIG = CONFIG;
+window.FAQ = FAQ;
 window.SALON = SALON; window.WORKING_HOURS = WORKING_HOURS; window.LUNCH = LUNCH;
 window.BUFFER_MIN = BUFFER_MIN; window.SLOT_STEP_MIN = SLOT_STEP_MIN;
 window.LISTINO = LISTINO; window.SERVICES = SERVICES; window.TEAM = TEAM; window.EXISTING_BOOKINGS = EXISTING_BOOKINGS;

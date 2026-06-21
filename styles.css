@@ -52,6 +52,12 @@ a{color:inherit;text-decoration:none}
 .btn[disabled]{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none}
 .btn-block{width:100%}
 
+/* ---------- inline SVG icons (Lucide style) ----------
+   Color is inherited (currentColor). Default = gold accent; override per context. */
+.ic-svg{width:1.25em;height:1.25em;display:inline-block;vertical-align:middle;flex:0 0 auto;stroke:currentColor}
+/* icons sitting inside a button take the button's text color */
+.btn .ic-svg{width:1.05em;height:1.05em;margin-right:-2px}
+
 /* ---------- header ---------- */
 header.site{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--header-h);
   display:flex;align-items:center;transition:.35s ease;background:transparent}
@@ -128,7 +134,7 @@ main{min-height:60vh}
 .grid-4{grid-template-columns:repeat(4,1fr)}
 .svc-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.3s;display:flex;flex-direction:column}
 .svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.svc-ic{font-size:1.9rem;margin-bottom:12px}
+.svc-ic{font-size:1.9rem;margin-bottom:12px;color:var(--gold-deep);line-height:0}
 .svc-card h3{font-size:1.55rem;margin-bottom:6px}
 .svc-card .desc{font-size:.88rem;color:var(--muted);font-weight:300;margin-bottom:16px;flex:1}
 .svc-meta{display:flex;gap:18px;font-size:.78rem;color:var(--muted);margin-bottom:6px;flex-wrap:wrap}
@@ -140,7 +146,7 @@ main{min-height:60vh}
 /* ---------- why us ---------- */
 .why-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.3s}
 .why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
-.why-card .ic{width:48px;height:48px;border-radius:12px;background:var(--beige);display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px}
+.why-card .ic{width:48px;height:48px;border-radius:12px;background:var(--beige);display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px;color:var(--gold-deep)}
 .why-card h4{font-family:'Jost';font-weight:600;font-size:1rem;margin-bottom:6px}
 .why-card p{font-size:.86rem;color:var(--muted);font-weight:300}
 
@@ -164,7 +170,10 @@ main{min-height:60vh}
   font-family:'Jost';font-size:.78rem;letter-spacing:.04em;cursor:pointer;color:var(--muted);transition:.25s}
 .gal-filters button.active{background:var(--soft-black);color:#fff;border-color:var(--soft-black)}
 .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.gal-grid figure{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:1/1;cursor:pointer}
+/* fixed 1:1 box keeps layout stable; the soft gradient is the placeholder
+   shown while a photo loads or if a slot has no real photo yet */
+.gal-grid figure{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:1/1;cursor:pointer;
+  background:linear-gradient(135deg,var(--beige),var(--beige-deep))}
 .gal-grid img{width:100%;height:100%;object-fit:cover;transition:.6s}
 .gal-grid figure:hover img{transform:scale(1.07)}
 .gal-grid figcaption{position:absolute;inset:auto 0 0 0;padding:14px;color:#fff;font-size:.78rem;letter-spacing:.06em;
@@ -175,6 +184,7 @@ main{min-height:60vh}
 .gal-grid figure.noimg{background:linear-gradient(135deg,var(--beige),var(--beige-deep))}
 .gal-grid figure.noimg .gal-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
   position:absolute;inset:0;font-size:2.4rem;color:var(--gold-deep)}
+.gal-grid figure.noimg .gal-fallback .ic-svg{width:2.4rem;height:2.4rem;stroke-width:1.4}
 .gal-grid figure.noimg .gal-fallback small{font-family:'Jost';font-size:.8rem;color:var(--ink);letter-spacing:.04em}
 .gal-grid figure.noimg figcaption{display:none}
 
@@ -204,7 +214,7 @@ main{min-height:60vh}
 .acc-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s}
 .acc-item.open{box-shadow:var(--shadow-sm);border-color:transparent}
 .acc-head{width:100%;display:flex;align-items:center;gap:14px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left;font-family:'Jost'}
-.acc-ic{font-size:1.5rem;flex:0 0 auto}
+.acc-ic{font-size:1.5rem;flex:0 0 auto;color:var(--gold-deep);line-height:0;display:grid;place-items:center}
 .acc-title{font-family:'Cormorant Garamond';font-size:1.5rem;font-weight:600;flex:1;color:var(--ink)}
 .acc-count{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .acc-chevron{font-size:1.4rem;color:var(--gold-deep);transition:.3s;flex:0 0 auto}
@@ -224,7 +234,8 @@ main{min-height:60vh}
 
 /* booking wizard: grouped options */
 .opt-group{margin-bottom:22px}
-.opt-group-h{font-family:'Cormorant Garamond';font-size:1.4rem;color:var(--gold-deep);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.opt-group-h{font-family:'Cormorant Garamond';font-size:1.4rem;color:var(--gold-deep);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
+.opt-group-h .ic-svg{width:1.1em;height:1.1em}
 
 /* ---------- prices ---------- */
 .price-list{max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -237,12 +248,23 @@ main{min-height:60vh}
 .price-row .pp small{font-family:'Jost';font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-right:6px}
 .price-note{max-width:760px;margin:22px auto 0;font-size:.84rem;color:var(--muted);font-style:italic;text-align:center}
 
+/* ---------- FAQ (native <details>) ---------- */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s}
+.faq-item[open]{box-shadow:var(--shadow-sm);border-color:transparent}
+.faq-item summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;gap:14px;
+  font-family:'Cormorant Garamond';font-size:1.4rem;font-weight:600;color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-chevron{margin-left:auto;font-size:1.4rem;color:var(--gold-deep);transition:.3s;flex:0 0 auto}
+.faq-item[open] .faq-chevron{transform:rotate(180deg)}
+.faq-a{padding:0 22px 20px;color:var(--muted);font-weight:300;font-size:.98rem;line-height:1.7}
+
 /* ---------- contact ---------- */
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:stretch}
 .info-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
 .info-item{display:flex;gap:15px;padding:16px 0;border-bottom:1px solid var(--line)}
 .info-item:last-child{border-bottom:none}
-.info-item .ic{width:42px;height:42px;border-radius:11px;background:var(--beige);display:grid;place-items:center;font-size:1.15rem;flex:0 0 auto}
+.info-item .ic{width:42px;height:42px;border-radius:11px;background:var(--beige);display:grid;place-items:center;font-size:1.3rem;flex:0 0 auto;color:var(--gold-deep)}
 .info-item h4{font-family:'Jost';font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:3px;font-weight:600}
 .info-item a,.info-item p{font-size:.94rem}
 .hours-row{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted);padding:3px 0}
@@ -251,15 +273,17 @@ main{min-height:60vh}
 .map-col{display:flex;flex-direction:column}
 .map-wrap{position:relative;border-radius:var(--radius);overflow:hidden;flex:1;min-height:420px;border:1px solid var(--line)}
 .map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
-/* floating business pin/bubble over the map: logo + name + city + directions */
+/* floating business pin/bubble over the map: logo + name + city + directions.
+   Stays inside the map bounds at every width (see mobile rules below). */
 .map-pin{position:absolute;left:16px;top:16px;right:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  max-width:calc(100% - 32px);
   background:rgba(255,253,251,.96);backdrop-filter:blur(6px);border:1px solid var(--line);
   border-radius:14px;padding:12px 14px;box-shadow:var(--shadow-sm)}
 .map-pin-logo{flex:0 0 auto;display:grid;place-items:center}
 .map-pin-logo .logo-em{width:46px;height:46px}
-.map-pin-txt{flex:1;line-height:1.2;min-width:0}
-.map-pin-txt b{font-family:'Cormorant Garamond';font-size:1.35rem;display:block}
-.map-pin-txt span{font-size:.82rem;color:var(--muted)}
+.map-pin-txt{flex:1 1 120px;line-height:1.2;min-width:0}
+.map-pin-txt b{font-family:'Cormorant Garamond';font-size:1.35rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-pin-txt span{font-size:.82rem;color:var(--muted);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .map-pin .btn{flex:0 0 auto}
 .social-row{display:flex;gap:10px;margin-top:20px}
 .social-row a{width:42px;height:42px;border-radius:11px;background:var(--beige);display:grid;place-items:center;font-size:1.1rem;transition:.25s}
@@ -288,7 +312,7 @@ main{min-height:60vh}
 .opt{border:1.5px solid var(--line);background:var(--ivory);border-radius:12px;padding:16px 18px;cursor:pointer;transition:.2s;text-align:left;display:flex;gap:14px;align-items:center}
 .opt:hover{border-color:var(--gold)}
 .opt.selected{border-color:var(--gold);background:#fdf8ef;box-shadow:0 0 0 3px rgba(194,160,99,.18)}
-.opt .ic{font-size:1.5rem;flex:0 0 auto}
+.opt .ic{font-size:1.5rem;flex:0 0 auto;color:var(--gold-deep);line-height:0;display:grid;place-items:center}
 .opt .in b{font-size:1.05rem;display:block}
 .opt .in small{color:var(--muted);font-size:.8rem}
 .opt .ic-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:grid;place-items:center;color:#fff;font-weight:600;font-family:'Cormorant Garamond';font-size:1.2rem;flex:0 0 auto;overflow:hidden}
@@ -366,6 +390,8 @@ footer ul a:hover{color:#E7CFA1}
   .burger{display:flex}
   .grid-3,.grid-2{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+  /* shorter map on tablet/phone so the pin sits cleanly inside the frame */
+  .map-wrap,.map-wrap iframe{min-height:340px}
   .quickband{flex-direction:column;align-items:flex-start;text-align:left}
   .opt-grid{grid-template-columns:1fr}
   .form-2{grid-template-columns:1fr}
@@ -384,6 +410,12 @@ footer ul a:hover{color:#E7CFA1}
   .stepper .st{min-width:60px;font-size:0}
   .stepper .st .num{font-size:.74rem}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
+  /* contact map pin: stack contents and let the button go full-width so the
+     bubble never overflows the map or leaves a white box on small phones */
+  .map-pin{left:12px;right:12px;top:12px;max-width:calc(100% - 24px);
+    flex-direction:column;align-items:stretch;text-align:left;gap:8px;padding:12px}
+  .map-pin-txt{flex:1 1 auto}
+  .map-pin .btn{width:100%}
 }
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}

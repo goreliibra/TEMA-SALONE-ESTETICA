@@ -15,7 +15,7 @@ const I18N = {
 
     // hero
     hero_title: "Il tuo salone di fiducia per taglio, colore e styling",
-    hero_sub: "Prenota il tuo appuntamento online o su WhatsApp e scegli il professionista più adatto a te.",
+    hero_sub: "Estetica Modenese è un salone di parrucchiere ed estetica unisex a Modena, in Via P. Giardini 386. Prenota online o su WhatsApp e scegli il professionista più adatto a te.",
     hero_cta1: "Prenota Online", hero_cta2: "Prenota su WhatsApp",
     hero_badge: "Parrucchiere Unisex a Modena",
 
@@ -24,12 +24,12 @@ const I18N = {
     quick_sub: "Scegli il servizio, il professionista e l’orario disponibile.",
     quick_cta: "Inizia la prenotazione",
 
-    // sections
+    // sections (first sentence front-loads the answer for AI/SEO retrieval)
     sec_popular: "Servizi più richiesti",
-    sec_popular_sub: "Tutti i servizi includono consulenza personalizzata.",
+    sec_popular_sub: "Da Estetica Modenese trovi taglio, colore, balayage, manicure, epilazione e massaggi: i servizi più richiesti, tutti con consulenza personalizzata.",
     sec_why: "Perché sceglierci",
     sec_team: "Il nostro team",
-    sec_team_sub: "Professionisti qualificati, ognuno con la propria specialità.",
+    sec_team_sub: "Il team di Estetica Modenese riunisce parrucchieri, estetiste e nail artist: professionisti qualificati, ognuno con la propria specialità.",
     sec_gallery: "I nostri lavori",
     sec_reviews: "Cosa dicono i clienti",
     sec_location: "Dove siamo",
@@ -278,10 +278,11 @@ Object.assign(I18N.it, {
   nav_services: "Servizi e Prezzi",
   maps_btn: "Apri su Google Maps", directions: "Come arrivare", slot_note: "Appuntamenti ogni 45 min",
   open_everyday: "Aperti tutti i giorni",
-  listino_title: "Servizi e Prezzi", listino_sub: "Tocca una categoria per vedere i trattamenti e i prezzi.",
+  listino_title: "Servizi e Prezzi", listino_sub: "Il taglio uomo parte da 15 €, il taglio donna da 20 € e il balayage da 80 €. Tocca una categoria per vedere tutti i trattamenti e i prezzi.",
   book_cat: "Categoria", services_count: "trattamenti", prenota_short: "Prenota",
   g_capelli: "Capelli", g_colore: "Colore", g_sopracciglia: "Sopracciglia",
-  g_manicure: "Manicure", g_epilazione: "Epilazione", g_massaggi: "Massaggi"
+  g_manicure: "Manicure", g_epilazione: "Epilazione", g_massaggi: "Massaggi",
+  sec_faq: "Domande frequenti", sec_faq_sub: "Le risposte alle domande più comuni su servizi, prezzi, orari e prenotazioni."
 });
 Object.assign(I18N.tr, {
   nav_services: "Hizmetler ve Fiyatlar",
@@ -290,7 +291,8 @@ Object.assign(I18N.tr, {
   listino_title: "Hizmetler ve Fiyatlar", listino_sub: "Hizmetleri ve fiyatları görmek için bir kategoriye dokun.",
   book_cat: "Kategori", services_count: "hizmet", prenota_short: "Randevu al",
   g_capelli: "Saç", g_colore: "Renk", g_sopracciglia: "Kaş",
-  g_manicure: "Manikür", g_epilazione: "Epilasyon", g_massaggi: "Masaj"
+  g_manicure: "Manikür", g_epilazione: "Epilasyon", g_massaggi: "Masaj",
+  sec_faq: "Sıkça sorulan sorular", sec_faq_sub: "Hizmetler, fiyatlar, çalışma saatleri ve randevular hakkında en sık sorulan soruların yanıtları."
 });
 Object.assign(I18N.en, {
   nav_services: "Services & Prices",
@@ -299,7 +301,8 @@ Object.assign(I18N.en, {
   listino_title: "Services & Prices", listino_sub: "Tap a category to see treatments and prices.",
   book_cat: "Category", services_count: "treatments", prenota_short: "Book",
   g_capelli: "Hair", g_colore: "Colour", g_sopracciglia: "Brows",
-  g_manicure: "Manicure", g_epilazione: "Waxing", g_massaggi: "Massage"
+  g_manicure: "Manicure", g_epilazione: "Waxing", g_massaggi: "Massage",
+  sec_faq: "Frequently asked questions", sec_faq_sub: "Answers to the most common questions about services, prices, hours and bookings."
 });
 
 function t(key) {

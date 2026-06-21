@@ -17,6 +17,35 @@
   // fallback for any failed image → keep layout clean, never show a wrong photo
   const imgFallback = "this.style.display='none';this.parentNode.classList.add('noimg')";
 
+  /* ---------------- ICONS ----------------
+     Inline SVG line icons (Lucide style, MIT). No external CDN, no emoji.
+     icon(name) → <svg> string. Color is inherited via currentColor, so set
+     the colour with CSS on the parent (we use the gold accent). To add a new
+     icon, paste the inner paths of any Lucide glyph here keyed by its name. */
+  const ICONS = {
+    gem:           '<path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>',
+    "message-circle":'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>',
+    sparkles:      '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/>',
+    "calendar-check":'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M8 2v4M16 2v4M9 16l2 2 4-4"/>',
+    wallet:        '<path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/><path d="M18 12a.5.5 0 0 0 0 1 .5.5 0 0 0 0-1Z"/>',
+    droplet:       '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+    scissors:      '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.12 8.12 20 20M14.8 14.8 20 4M8.12 15.88 12 12"/>',
+    hand:          '<path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>',
+    footprints:    '<path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4M4 13h4"/>',
+    flower:        '<circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M12 16.5V15M16.5 12H15"/>',
+    eye:           '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+    "map-pin":     '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+    phone:         '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>',
+    "message-square":'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    instagram:     '<rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
+    clock:         '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+    navigation:    '<path d="M3 11l19-9-9 19-2-8-8-2z"/>'
+  };
+  function icon(name, cls) {
+    const body = ICONS[name] || ICONS.sparkles;
+    return `<svg class="ic-svg${cls ? " " + cls : ""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+  }
+
   /* ---------------- VIEWS ---------------- */
   const views = {};
 
@@ -49,7 +78,7 @@
     <section class="section beige"><div class="wrap">
       <div class="section-head center reveal"><span class="eyebrow">${SALON.name}</span><h2>${t("sec_why")}</h2></div>
       <div class="grid grid-3 reveal">
-        ${[1,2,3,4,5,6].map(i => `<div class="why-card"><div class="ic">${["💎","💬","✨","📅","💶","🧴"][i-1]}</div><h4>${t("why"+i+"_t")}</h4><p>${t("why"+i+"_d")}</p></div>`).join("")}
+        ${[1,2,3,4,5,6].map(i => `<div class="why-card"><div class="ic">${icon(["gem","message-circle","sparkles","calendar-check","wallet","droplet"][i-1])}</div><h4>${t("why"+i+"_t")}</h4><p>${t("why"+i+"_d")}</p></div>`).join("")}
       </div>
     </div></section>
 
@@ -73,6 +102,8 @@
       </div>
     </div></section>
 
+    ${faqSection()}
+
     ${locationSection()}
   `;
 
@@ -86,7 +117,7 @@
         ${LISTINO.map((cat, idx) => `
           <div class="acc-item ${idx===0?'open':''}" data-cat="${cat.id}">
             <button class="acc-head" aria-expanded="${idx===0}">
-              <span class="acc-ic">${cat.icon}</span>
+              <span class="acc-ic">${icon(cat.icon)}</span>
               <span class="acc-title">${L(cat.label)}</span>
               <span class="acc-count">${cat.items.length} ${t("services_count")}</span>
               <span class="acc-chevron" aria-hidden="true">⌄</span>
@@ -167,7 +198,7 @@
   }
   function svcCard(s) {
     return `<div class="svc-card">
-      <div class="svc-ic">${s.icon}</div>
+      <div class="svc-ic">${icon(s.icon)}</div>
       <div class="svc-cat-tag">${L(s.catLabel)}</div>
       <h3>${L(s.name)}</h3>
       <div class="svc-meta"><span>${t("duration")}: <b>${s.duration} ${t("min")}</b></span></div>
@@ -177,7 +208,7 @@
   }
   function teamCard(p) {
     return `<div class="team-card">
-      <div class="team-photo-wrap"><img class="team-photo" src="${p.photo}" alt="${p.name} — ${L(p.role)}" loading="lazy" onerror="${imgFallback}"><span class="team-photo-fallback">${initials(p.name)}</span></div>
+      <div class="team-photo-wrap"><img class="team-photo" src="${p.photo}" alt="${p.name} — ${L(p.role)}" loading="lazy" decoding="async" onerror="${imgFallback}"><span class="team-photo-fallback">${initials(p.name)}</span></div>
       <div class="team-body">
         <h3>${p.name}</h3>
         <div class="team-role">${L(p.role)}</div>
@@ -187,7 +218,7 @@
   }
   function teamCardFull(p) {
     return `<div class="team-card">
-      <div class="team-photo-wrap"><img class="team-photo" src="${p.photo}" alt="${p.name} — ${L(p.role)}" loading="lazy" onerror="${imgFallback}"><span class="team-photo-fallback">${initials(p.name)}</span></div>
+      <div class="team-photo-wrap"><img class="team-photo" src="${p.photo}" alt="${p.name} — ${L(p.role)}" loading="lazy" decoding="async" onerror="${imgFallback}"><span class="team-photo-fallback">${initials(p.name)}</span></div>
       <div class="team-body">
         <h3>${p.name}</h3>
         <div class="team-role">${L(p.role)}</div>
@@ -198,9 +229,12 @@
     </div>`;
   }
   function galFig(g) {
+    // Responsive drop-in placeholder: fixed 1:1 box (CSS), lazy + async, alt text.
+    // To use real photos, just replace each GALLERY[].src in data.js — layout
+    // never shifts and a labelled tile shows until/if a photo is missing.
     return `<figure data-cat="${g.cat}">
-      <img src="${g.src}" alt="${L(g.alt)}" loading="lazy" onerror="${imgFallback}">
-      <span class="gal-fallback">${g.icon || "✨"}<small>${L(g.alt)}</small></span>
+      <img src="${g.src}" alt="${L(g.alt)}" loading="lazy" decoding="async" onerror="${imgFallback}">
+      <span class="gal-fallback">${icon(g.icon || "sparkles")}<small>${L(g.alt)}</small></span>
       <figcaption>${L(g.alt)}</figcaption>
     </figure>`;
   }
@@ -225,6 +259,21 @@
       ${locationInner()}
     </div></section>`;
   }
+  /* FAQ — long-tail Q&A (data: FAQ in data.js). Native <details> = accessible,
+     no JS needed, fully portable. Answers are front-loaded for AI retrieval.
+     FAQPage JSON-LD is generated separately from the same data by seo.js. */
+  function faqSection() {
+    if (!window.FAQ || !FAQ.length) return "";
+    return `<section class="section"><div class="wrap">
+      <div class="section-head center reveal"><span class="eyebrow">FAQ</span><h2>${t("sec_faq")}</h2><p>${t("sec_faq_sub")}</p></div>
+      <div class="faq reveal">
+        ${FAQ.map((f, i) => `<details class="faq-item"${i===0?" open":""}>
+          <summary>${f.q}<span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="faq-a">${f.a}</div>
+        </details>`).join("")}
+      </div>
+    </div></section>`;
+  }
   const logoSvg = `<svg viewBox="0 0 100 100" class="logo-em" role="img" aria-label="Estetica Modenese">
     <circle cx="50" cy="50" r="48" fill="none" stroke="url(#emRing)" stroke-width="4"/>
     <circle cx="50" cy="50" r="44" fill="#0d0d0d"/>
@@ -235,15 +284,15 @@
   function locationInner() {
     return `<div class="wrap"><div class="contact-grid reveal">
       <div class="info-card">
-        <div class="info-item"><div class="ic">📍</div><div>
+        <div class="info-item"><div class="ic">${icon("map-pin")}</div><div>
           <h4>${t("address")}</h4>
           <p><b>${SALON.name}</b><br>${SALON.addressLine}, ${SALON.zip} ${SALON.city} (${SALON.province})</p>
-          <a href="${SALON.directions}" target="_blank" rel="noopener" class="btn btn-dark btn-sm" style="margin-top:10px">🧭 ${t("directions")}</a>
+          <a href="${SALON.directions}" target="_blank" rel="noopener" class="btn btn-dark btn-sm" style="margin-top:10px">${icon("navigation")} ${t("directions")}</a>
         </div></div>
-        <div class="info-item"><div class="ic">📞</div><div><h4>${t("phone")}</h4><a href="tel:${SALON.phoneHref}">${SALON.phone}</a></div></div>
-        <div class="info-item"><div class="ic">💬</div><div><h4>${t("whatsapp_w")}</h4><a href="${defaultWa()}" target="_blank" rel="noopener">${SALON.phone}</a></div></div>
-        <div class="info-item"><div class="ic">📷</div><div><h4>${t("instagram")}</h4><a href="${SALON.instagramUrl}" target="_blank" rel="noopener">${SALON.instagram}</a></div></div>
-        <div class="info-item"><div class="ic">🕐</div><div style="flex:1"><h4>${t("hours")} · <span style="color:var(--gold-deep)">${t("open_everyday")}</span></h4>${hoursRows()}</div></div>
+        <div class="info-item"><div class="ic">${icon("phone")}</div><div><h4>${t("phone")}</h4><a href="tel:${SALON.phoneHref}">${SALON.phone}</a></div></div>
+        <div class="info-item"><div class="ic">${icon("message-square")}</div><div><h4>${t("whatsapp_w")}</h4><a href="${defaultWa()}" target="_blank" rel="noopener">${SALON.phone}</a></div></div>
+        <div class="info-item"><div class="ic">${icon("instagram")}</div><div><h4>${t("instagram")}</h4><a href="${SALON.instagramUrl}" target="_blank" rel="noopener">${SALON.instagram}</a></div></div>
+        <div class="info-item"><div class="ic">${icon("clock")}</div><div style="flex:1"><h4>${t("hours")} · <span style="color:var(--gold-deep)">${t("open_everyday")}</span></h4>${hoursRows()}</div></div>
         <a href="#book" class="btn btn-gold btn-block" style="margin-top:18px">${t("cta_book_now")}</a>
       </div>
       <div class="map-col">
@@ -252,7 +301,7 @@
           <div class="map-pin">
             <span class="map-pin-logo">${logoSvg}</span>
             <div class="map-pin-txt"><b>${SALON.name}</b><span>${SALON.city}, ${SALON.country}</span></div>
-            <a href="${SALON.directions}" target="_blank" rel="noopener" class="btn btn-gold btn-sm">🧭 ${t("directions")}</a>
+            <a href="${SALON.directions}" target="_blank" rel="noopener" class="btn btn-gold btn-sm">${icon("navigation")} ${t("directions")}</a>
           </div>
         </div>
         <a href="${SALON.mapsLink}" target="_blank" rel="noopener" class="btn btn-dark btn-block" style="margin-top:10px">${t("maps_btn")}</a>
@@ -296,10 +345,10 @@
     const groups = LISTINO.map(cat => {
       const items = SERVICES.filter(s => s.cat === cat.id);
       if (!items.length) return "";
-      return `<div class="opt-group"><div class="opt-group-h">${cat.icon} ${L(cat.label)}</div>
+      return `<div class="opt-group"><div class="opt-group-h">${icon(cat.icon)} ${L(cat.label)}</div>
         <div class="opt-grid">${items.map(s => `
           <button class="opt ${BS.service===s.id?'selected':''}" data-svc="${s.id}">
-            <span class="ic">${s.icon}</span>
+            <span class="ic">${icon(s.icon)}</span>
             <span class="in"><b>${L(s.name)}</b><small>${s.duration} ${t("min")} · ${formatPriceText(s.price)}</small></span>
           </button>`).join("")}</div></div>`;
     }).join("");
@@ -500,9 +549,26 @@
       book: `Prenota da ${SALON.name} a ${SALON.city}: scegli servizio, professionista, data e orario.`,
       contact: `Indirizzo (${SALON.addressLine}), orari e contatti di ${SALON.name} a ${SALON.city}.`
     }[route] || `Estetica e parrucchiere a ${SALON.city} — ${SALON.name}.`;
-    let m = document.querySelector('meta[name="description"]');
-    if (!m) { m = document.createElement("meta"); m.name = "description"; document.head.appendChild(m); }
-    m.setAttribute("content", desc);
+    setMetaTag('meta[name="description"]', "name", "description", desc);
+    // keep social + canonical in sync as the user moves between sections
+    const title = pageTitle(route);
+    setMetaTag('meta[property="og:title"]', "property", "og:title", title);
+    setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", title);
+    setMetaTag('meta[property="og:description"]', "property", "og:description", desc);
+    setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", desc);
+    if (window.CONFIG) {
+      const path = location.pathname.replace(/\/index\.html?$/i, "/");
+      const url = String(CONFIG.SITE_DOMAIN || "").replace(/\/+$/, "") + path;
+      setMetaTag('meta[property="og:url"]', "property", "og:url", url);
+      let c = document.querySelector('link[rel="canonical"]');
+      if (!c) { c = document.createElement("link"); c.rel = "canonical"; document.head.appendChild(c); }
+      c.setAttribute("href", url);
+    }
+  }
+  function setMetaTag(sel, attr, key, content) {
+    let m = document.querySelector(sel);
+    if (!m) { m = document.createElement("meta"); m.setAttribute(attr, key); document.head.appendChild(m); }
+    m.setAttribute("content", content);
   }
   function init() {
     const saved = localStorage.getItem("em_lang");

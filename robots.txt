@@ -1,0 +1,6 @@
+# robots.txt — Estetica Modenese
+# Rebrand: update the Sitemap URL to your real domain.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.esteticamodenese.it/sitemap.xml
