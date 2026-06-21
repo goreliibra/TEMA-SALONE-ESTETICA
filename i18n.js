@@ -284,7 +284,8 @@ Object.assign(I18N.it, {
   g_manicure: "Manicure", g_epilazione: "Epilazione", g_massaggi: "Massaggi",
   sec_faq: "Domande frequenti", sec_faq_sub: "Le risposte alle domande più comuni su servizi, prezzi, orari e prenotazioni.",
   g_reviews_title: "Recensioni Google", g_reviews_based: "su Google",
-  g_reviews_count: "recensioni", g_reviews_read: "Leggi su Google", g_reviews_write: "Lascia una recensione su Google"
+  g_reviews_count: "recensioni", g_reviews_read: "Leggi su Google", g_reviews_write: "Lascia una recensione su Google",
+  mb_call: "Chiama", mb_directions: "Indicazioni"
 });
 Object.assign(I18N.tr, {
   nav_services: "Hizmetler ve Fiyatlar",
@@ -296,7 +297,8 @@ Object.assign(I18N.tr, {
   g_manicure: "Manikür", g_epilazione: "Epilasyon", g_massaggi: "Masaj",
   sec_faq: "Sıkça sorulan sorular", sec_faq_sub: "Hizmetler, fiyatlar, çalışma saatleri ve randevular hakkında en sık sorulan soruların yanıtları.",
   g_reviews_title: "Google Yorumları", g_reviews_based: "Google üzerinden",
-  g_reviews_count: "yorum", g_reviews_read: "Google'da oku", g_reviews_write: "Google'da değerlendir"
+  g_reviews_count: "yorum", g_reviews_read: "Google'da oku", g_reviews_write: "Google'da değerlendir",
+  mb_call: "Ara", mb_directions: "Yol tarifi"
 });
 Object.assign(I18N.en, {
   nav_services: "Services & Prices",
@@ -308,7 +310,8 @@ Object.assign(I18N.en, {
   g_manicure: "Manicure", g_epilazione: "Waxing", g_massaggi: "Massage",
   sec_faq: "Frequently asked questions", sec_faq_sub: "Answers to the most common questions about services, prices, hours and bookings.",
   g_reviews_title: "Google Reviews", g_reviews_based: "on Google",
-  g_reviews_count: "reviews", g_reviews_read: "Read on Google", g_reviews_write: "Leave a Google review"
+  g_reviews_count: "reviews", g_reviews_read: "Read on Google", g_reviews_write: "Leave a Google review",
+  mb_call: "Call", mb_directions: "Directions"
 });
 
 function t(key) {

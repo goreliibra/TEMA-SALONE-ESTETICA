@@ -391,7 +391,16 @@ footer ul a:hover{color:#E7CFA1}
   display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6);transition:.3s;color:#fff}
 .wa-float:hover{transform:scale(1.07)}
 .wa-float svg{width:28px;height:28px}
+/* premium 4-action mobile bar (WhatsApp · Book · Call · Directions) — desktop hidden */
 .mobile-bar{display:none}
+.mb-act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  padding:7px 4px;border-radius:12px;color:var(--ink);font-family:'Jost';transition:.2s}
+.mb-act svg{width:22px;height:22px}
+.mb-act span{font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;font-weight:500;line-height:1}
+.mb-act:active{transform:scale(.94)}
+.mb-act.mb-wa{color:#1DA851}
+.mb-act.mb-book{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;
+  box-shadow:0 8px 20px -10px rgba(168,133,63,.9)}
 
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
@@ -416,12 +425,13 @@ footer ul a:hover{color:#E7CFA1}
   .form-2{grid-template-columns:1fr}
   .confirm-btns{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
-  .wa-float{bottom:78px}
-  .mobile-bar{display:grid;grid-template-columns:1fr;position:fixed;inset:auto 0 0 0;z-index:88;
-    padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,248,243,.96);
-    backdrop-filter:blur(10px);box-shadow:0 -6px 24px -16px rgba(0,0,0,.5)}
-  .mobile-bar .btn{width:100%}
-  main{padding-bottom:74px}
+  .mobile-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-items:stretch;
+    position:fixed;inset:auto 0 0 0;z-index:88;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(251,248,243,.97);
+    border-top:1px solid var(--line);backdrop-filter:blur(10px);box-shadow:0 -6px 24px -16px rgba(0,0,0,.5)}
+  /* WhatsApp float sits above the taller action bar so they don't overlap */
+  .wa-float{bottom:92px}
+  main{padding-bottom:84px}
 }
 @media(max-width:480px){
   .section{padding:64px 0}
