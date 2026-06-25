@@ -61,11 +61,14 @@
   upsertMeta("name", "twitter:description", ogDesc);
   if (ogImage) upsertMeta("name", "twitter:image", ogImage);
 
-  /* ---- favicon (E&M monogram as inline SVG data-URI) ---- */
+  /* ---- favicon (E&M wordmark on dark, inline SVG data-URI) ---- */
+  var favShort = (C.BUSINESS_SHORT || C.BUSINESS_NAME[0] || "S").replace(/&/g, "&amp;");
   var favSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
-    '<circle cx="50" cy="50" r="48" fill="#1E1A16"/>' +
-    '<text x="50" y="62" text-anchor="middle" fill="#C2A063" font-family="Georgia,serif" font-size="44" font-weight="700">' +
-    (C.BUSINESS_SHORT || C.BUSINESS_NAME[0] || "S").replace(/&/g, "&amp;") + '</text></svg>';
+    '<rect width="100" height="100" rx="14" fill="#0d0d0d"/>' +
+    '<text x="50" y="49" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="38" font-weight="600" letter-spacing="-1">' + favShort + '</text>' +
+    '<line x1="30" y1="60" x2="70" y2="60" stroke="#fff" stroke-width="1" opacity=".5"/>' +
+    '<text x="50" y="72" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="9" letter-spacing="2.5">ESTETICA</text>' +
+    '<text x="50" y="84" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="9" letter-spacing="2.5">MODENESE</text></svg>';
   upsertLink("icon", "data:image/svg+xml," + encodeURIComponent(favSvg), { type: "image/svg+xml" });
 
   /* ---- LocalBusiness JSON-LD (consistent NAP) ---- */

@@ -319,13 +319,11 @@
       </div>
     </div></section>`;
   }
-  const logoSvg = `<svg viewBox="0 0 100 100" class="logo-em" role="img" aria-label="Estetica Modenese">
-    <circle cx="50" cy="50" r="48" fill="none" stroke="url(#emRing)" stroke-width="4"/>
-    <circle cx="50" cy="50" r="44" fill="#0d0d0d"/>
-    <text x="50" y="50" text-anchor="middle" fill="#fff" font-family="'Cormorant Garamond',serif" font-size="30" font-weight="700" letter-spacing="-1">E&amp;M</text>
-    <line x1="32" y1="59" x2="68" y2="59" stroke="#fff" stroke-width="1" opacity=".55"/>
-    <text x="50" y="70" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">ESTETICA</text>
-    <text x="50" y="81" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="9.5" letter-spacing="1.5">MODENESE</text></svg>`;
+  const logoSvg = `<svg viewBox="0 0 200 200" class="logo-em" role="img" aria-label="Estetica Modenese">
+    <text x="100" y="92" text-anchor="middle" fill="#fff" font-family="'Cormorant Garamond',Georgia,serif" font-size="78" font-weight="600" letter-spacing="-2">E&amp;M</text>
+    <line x1="58" y1="118" x2="142" y2="118" stroke="#fff" stroke-width="1.4" opacity=".55"/>
+    <text x="100" y="142" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="17" font-weight="300" letter-spacing="6">ESTETICA</text>
+    <text x="100" y="166" text-anchor="middle" fill="#fff" font-family="'Jost',sans-serif" font-size="17" font-weight="300" letter-spacing="6">MODENESE</text></svg>`;
   function locationInner() {
     return `<div class="wrap"><div class="contact-grid reveal">
       <div class="info-card">

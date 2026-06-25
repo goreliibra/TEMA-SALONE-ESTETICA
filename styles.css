@@ -69,10 +69,13 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .brand-txt b{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:.01em;line-height:1;display:block}
 .brand-txt small{display:block;font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 
-/* E&M logo (SVG) — black disc, rainbow ring, name inside */
-.logo-em{width:64px;height:64px;flex:0 0 auto;display:block}
-footer .logo-em{width:72px;height:72px}
-@media(max-width:480px){.logo-em{width:56px;height:56px}}
+/* E&M logo (SVG) — wordmark: serif "E&M" + ESTETICA/MODENESE; color via currentColor */
+.logo-em{width:88px;height:88px;flex:0 0 auto;display:block;color:#fff}
+footer .logo-em{width:96px;height:96px}
+@media(max-width:480px){.logo-em{width:72px;height:72px}}
+/* header logo follows header state: light over hero, dark when solid/on-light */
+header.site .logo-em{color:#fff}
+header.site.solid .logo-em,header.site.on-light .logo-em{color:var(--ink)}
 header.site.on-light .brand-txt b,header.site.on-light .nav a{color:var(--ink)}
 /* transparent header over the dark hero → light text */
 header.site:not(.solid) .brand-txt b{color:#fff}
