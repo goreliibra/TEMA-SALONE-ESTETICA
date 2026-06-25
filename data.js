@@ -44,8 +44,8 @@ const CONFIG = {
   SOCIAL: ["https://www.instagram.com/esteticamodenese/"],
 
   // --- Google reviews (shown in the "Recensioni Google" block) ---
-  GOOGLE_RATING: 4.6,        // average stars on Google
-  GOOGLE_REVIEWS_COUNT: 94,  // number of reviews on Google
+  GOOGLE_RATING: 4.8,        // average stars on Google (real, da Google Business)
+  GOOGLE_REVIEWS_COUNT: 95,  // number of reviews on Google (real)
   // Link to your Google Business page (write/read reviews). If empty, a Google
   // Maps search for the business name is used.
   GOOGLE_REVIEW_URL: "",
