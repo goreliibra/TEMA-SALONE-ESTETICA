@@ -56,7 +56,7 @@ const CONFIG = {
   // When you have a clip: optimise it (~2–4 MB mp4), put it in the project as
   // hero.mp4, then set HERO_VIDEO: "hero.mp4". The poster shows instantly while
   // the video loads, and on devices that block autoplay the poster stays.
-  HERO_VIDEO: ""   // e.g. "hero.mp4"
+  HERO_VIDEO: "hero.mp4"   // demo clip (Mixkit free license) — swap for a real salon clip
 };
 
 /* ---- Salon / LocalBusiness info (derived from CONFIG — do not edit by hand) ---- */
