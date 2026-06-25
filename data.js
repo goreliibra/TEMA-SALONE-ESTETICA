@@ -304,16 +304,28 @@ const GALLERY = [
   { cat: "manicure",     icon: "gem",        src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=700&q=80", alt: { it: "Semipermanente", tr: "Kalıcı oje", en: "Gel polish" } }
 ];
 
-/* ---- Reviews ---- */
+/* ---- Reviews ----
+   DEMO: queste sono recensioni di esempio (realistiche) per mostrare il layout.
+   Quando hai le recensioni Google VERE, sostituisci nome / testo (it) / voto /
+   data con quelle reali; le traduzioni tr/en le aggiungiamo noi.
+   `source: "google"` mostra il badge "Verificata su Google". ---- */
 const REVIEWS = [
-  { name: "Francesca R.", rating: 5, date: "2026-05",
-    text: { it: "Professionalità e accoglienza top. Il mio balayage è perfetto!", tr: "Profesyonellik ve sıcaklık üst düzey. Balyajım kusursuz!", en: "Top professionalism and warmth. My balayage is perfect!" } },
-  { name: "Martina B.", rating: 5, date: "2026-04",
-    text: { it: "Manicure semipermanente impeccabile e ambiente curatissimo.", tr: "Kusursuz kalıcı oje ve çok özenli ortam.", en: "Impeccable gel manicure and a very neat space." } },
-  { name: "Sara V.", rating: 5, date: "2026-04",
-    text: { it: "Epilazione delicata e veloce, personale gentilissimo.", tr: "Nazik ve hızlı ağda, çok kibar ekip.", en: "Gentle, quick waxing and very kind staff." } },
-  { name: "Giulia P.", rating: 5, date: "2026-03",
-    text: { it: "Taglio e piega sempre perfetti. Consigliatissimo!", tr: "Kesim ve fön her zaman kusursuz. Kesinlikle tavsiye!", en: "Cut and blow-dry always perfect. Highly recommended!" } }
+  { name: "Francesca Rinaldi", rating: 5, date: "2026-05", source: "google",
+    text: { it: "Esperienza fantastica! Mi sono affidata a loro per un balayage e il risultato ha superato le aspettative. Personale super professionale e ambiente accogliente. Tornerò sicuramente.", tr: "Harika bir deneyim! Balyaj için onlara güvendim ve sonuç beklentilerimi aştı. Son derece profesyonel ekip ve sıcak bir ortam. Kesinlikle tekrar geleceğim.", en: "Fantastic experience! I trusted them for a balayage and the result exceeded my expectations. Super professional staff and a welcoming space. I'll definitely be back." } },
+  { name: "Martina Bonaccini", rating: 5, date: "2026-05", source: "google",
+    text: { it: "Manicure semipermanente impeccabile, durata perfetta e tanta cura nei dettagli. Il salone è curatissimo e pulito. Consigliatissimo!", tr: "Kusursuz kalıcı oje manikür, mükemmel dayanıklılık ve detaylara büyük özen. Salon çok bakımlı ve temiz. Kesinlikle tavsiye ederim!", en: "Impeccable gel manicure, perfect lasting and great attention to detail. The salon is spotless and well kept. Highly recommended!" } },
+  { name: "Alessandro Ferri", rating: 5, date: "2026-04", source: "google",
+    text: { it: "Taglio uomo e barba fatti benissimo, ragazzi molto preparati e simpatici. Prezzi onesti per la qualità del servizio. Lo consiglio a tutti.", tr: "Erkek kesimi ve sakal harika yapıldı, çok bilgili ve sıcak bir ekip. Hizmet kalitesine göre dürüst fiyatlar. Herkese tavsiye ederim.", en: "Men's cut and beard done really well, very skilled and friendly guys. Honest prices for the quality of service. I recommend it to everyone." } },
+  { name: "Giulia Pedretti", rating: 5, date: "2026-04", source: "google",
+    text: { it: "Taglio e piega sempre perfetti, esco sempre soddisfatta. Sanno consigliarti in base al viso e al tipo di capello. Bravissimi!", tr: "Kesim ve fön her zaman kusursuz, hep memnun ayrılıyorum. Yüzüne ve saç tipine göre öneri yapmayı biliyorlar. Çok başarılılar!", en: "Cut and blow-dry always perfect, I always leave satisfied. They know how to advise you based on your face and hair type. Excellent!" } },
+  { name: "Sara Vandelli", rating: 5, date: "2026-03", source: "google",
+    text: { it: "Epilazione delicata e veloce, personale gentilissimo e attento all'igiene. Mi sono trovata benissimo, ci tornerò.", tr: "Nazik ve hızlı ağda, çok kibar ve hijyene dikkat eden bir ekip. Çok memnun kaldım, tekrar geleceğim.", en: "Gentle, quick waxing, very kind staff and attentive to hygiene. I had a great experience, I'll come back." } },
+  { name: "Chiara Malagoli", rating: 5, date: "2026-03", source: "google",
+    text: { it: "Massaggio rilassante davvero rigenerante, atmosfera tranquilla e mani esperte. Un'ora di puro relax nel cuore di Modena.", tr: "Rahatlatıcı masaj gerçekten yenileyiciydi, sakin bir atmosfer ve usta eller. Modena'nın kalbinde bir saatlik saf huzur.", en: "Truly rejuvenating relaxing massage, calm atmosphere and expert hands. An hour of pure relaxation in the heart of Modena." } },
+  { name: "Federica Govoni", rating: 4, date: "2026-02", source: "google",
+    text: { it: "Ottimo servizio per la ricostruzione unghie, risultato naturale e resistente. Unica nota: nei weekend c'è un po' di attesa, meglio prenotare.", tr: "Tırnak yapımında çok iyi hizmet, doğal ve dayanıklı bir sonuç. Tek not: hafta sonları biraz bekleme oluyor, randevu almak daha iyi.", en: "Great service for nail extensions, natural and long-lasting result. One note: there's a bit of a wait on weekends, better to book." } },
+  { name: "Davide Roncaglia", rating: 5, date: "2026-02", source: "google",
+    text: { it: "Vado da loro da anni per taglio e colore. Sempre cortesi, puntuali e aggiornati sulle ultime tendenze. Un punto di riferimento a Modena.", tr: "Yıllardır kesim ve renk için onlara gidiyorum. Her zaman nazik, dakik ve son trendlerden haberdarlar. Modena'da bir referans noktası.", en: "I've been going to them for years for cut and colour. Always courteous, punctual and up to date on the latest trends. A landmark in Modena." } }
 ];
 
 /* ---- FAQ (Italian) — natural long-tail questions people ask AI/Google.

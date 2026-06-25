@@ -58,6 +58,8 @@ const I18N = {
 
     // reviews
     rev_leave: "Lascia una recensione", rev_read: "Leggi le recensioni",
+    rev_verified: "Verificata su Google",
+    months: "Gennaio,Febbraio,Marzo,Aprile,Maggio,Giugno,Luglio,Agosto,Settembre,Ottobre,Novembre,Dicembre",
 
     // booking wizard
     book_title: "Prenota un appuntamento",
@@ -146,6 +148,8 @@ const I18N = {
     "g_taglio-donna": "Kadın Kesimi", "g_taglio-uomo": "Erkek Kesimi", g_barba: "Sakal", g_trattamenti: "Bakımlar",
 
     rev_leave: "Yorum bırak", rev_read: "Yorumları oku",
+    rev_verified: "Google'da doğrulandı",
+    months: "Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık",
 
     book_title: "Randevu al",
     book_sub: "Hizmetten uygun saate, birkaç adımda.",
@@ -230,6 +234,8 @@ const I18N = {
     "g_taglio-donna": "Women's Cut", "g_taglio-uomo": "Men's Cut", g_barba: "Beard", g_trattamenti: "Treatments",
 
     rev_leave: "Leave a review", rev_read: "Read reviews",
+    rev_verified: "Verified on Google",
+    months: "January,February,March,April,May,June,July,August,September,October,November,December",
 
     book_title: "Book an appointment",
     book_sub: "From service to available time in a few steps.",

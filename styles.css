@@ -210,7 +210,12 @@ main{min-height:60vh}
 /* ---------- reviews ---------- */
 .rev-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.3s}
 .rev-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
-.stars{color:var(--gold);letter-spacing:3px;margin-bottom:12px}
+.rev-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.stars{color:var(--gold);letter-spacing:3px}
+/* "Verified on Google" badge on each review card */
+.rev-verified{display:inline-flex;align-items:center;gap:5px;font-size:.66rem;font-weight:500;
+  letter-spacing:.02em;color:var(--muted);white-space:nowrap}
+.rev-g{width:14px;height:14px;flex:0 0 auto}
 .rev-card p{font-family:'Cormorant Garamond';font-style:italic;font-size:1.3rem;line-height:1.4;color:var(--ink);margin-bottom:18px}
 .rev-who{display:flex;align-items:center;gap:12px}
 .rev-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));
