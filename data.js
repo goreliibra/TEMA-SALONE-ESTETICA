@@ -304,6 +304,21 @@ const GALLERY = [
   { cat: "manicure",     icon: "gem",        src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=700&q=80", alt: { it: "Semipermanente", tr: "Kalıcı oje", en: "Gel polish" } }
 ];
 
+/* ---- Before / After (Prima / Dopo) — interactive slider ----
+   DEMO: foto di esempio. Sostituisci `before` e `after` con le foto reali
+   (stessa inquadratura se possibile). `label` = tipo di trasformazione. ---- */
+const BEFORE_AFTER = [
+  { label: { it: "Balayage", tr: "Balyaj", en: "Balayage" },
+    before: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80" },
+  { label: { it: "Colore & Piega", tr: "Renk & Fön", en: "Colour & Blow-dry" },
+    before: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80" },
+  { label: { it: "Taglio & Styling", tr: "Kesim & Şekillendirme", en: "Cut & Styling" },
+    before: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1599387737838-626f48a1e89e?auto=format&fit=crop&w=800&q=80" }
+];
+
 /* ---- Reviews ----
    DEMO: queste sono recensioni di esempio (realistiche) per mostrare il layout.
    Quando hai le recensioni Google VERE, sostituisci nome / testo (it) / voto /
@@ -365,3 +380,4 @@ window.SALON = SALON; window.WORKING_HOURS = WORKING_HOURS; window.LUNCH = LUNCH
 window.BUFFER_MIN = BUFFER_MIN; window.SLOT_STEP_MIN = SLOT_STEP_MIN;
 window.LISTINO = LISTINO; window.SERVICES = SERVICES; window.TEAM = TEAM; window.EXISTING_BOOKINGS = EXISTING_BOOKINGS;
 window.GALLERY = GALLERY; window.GALLERY_CATS = GALLERY_CATS; window.REVIEWS = REVIEWS;
+window.BEFORE_AFTER = BEFORE_AFTER;

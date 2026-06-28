@@ -201,6 +201,30 @@ main{min-height:60vh}
 .gal-grid figure.noimg .gal-fallback small{font-family:'Jost';font-size:.8rem;color:var(--ink);letter-spacing:.04em}
 .gal-grid figure.noimg figcaption{display:none}
 
+/* ---------- before / after (Prima / Dopo) slider ---------- */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ba-slider{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/5;margin:0;
+  cursor:ew-resize;touch-action:none;user-select:none;box-shadow:var(--shadow-sm);background:var(--beige)}
+.ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+/* before layer is clipped from the right at the handle position */
+.ba-before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.ba-tag{position:absolute;top:12px;z-index:3;font-size:.62rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;background:rgba(15,11,7,.55);padding:5px 10px;border-radius:50px;backdrop-filter:blur(4px)}
+.ba-tag-before{left:12px}
+.ba-tag-after{right:12px}
+/* vertical divider + round grabber at the handle position */
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:rgba(255,255,255,.9);
+  transform:translateX(-50%);z-index:4;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.ba-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:40px;height:40px;border-radius:50%;background:#fff;color:var(--gold-deep);
+  display:grid;place-items:center;font-size:1rem;font-weight:700;letter-spacing:-1px;box-shadow:0 4px 14px -4px rgba(0,0,0,.5)}
+.ba-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:30px 14px 14px;color:#fff;
+  font-family:'Cormorant Garamond';font-size:1.15rem;font-weight:600;text-align:center;
+  background:linear-gradient(to top,rgba(10,7,4,.7),transparent)}
+/* range kept for keyboard accessibility; visually hidden, doesn't block drag */
+.ba-range{position:absolute;left:0;bottom:0;width:100%;height:30px;margin:0;opacity:0;pointer-events:none;z-index:5}
+.ba-range:focus-visible{opacity:1;pointer-events:auto}
+
 /* team photo + initials fallback */
 .team-photo-wrap{position:relative;aspect-ratio:1/1;width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-deep))}
 .team-photo-wrap .team-photo{position:relative;z-index:1}
@@ -438,6 +462,7 @@ footer ul a:hover{color:#E7CFA1}
 @media(max-width:1000px){
   .grid-4{grid-template-columns:repeat(2,1fr)}
   .gal-grid{grid-template-columns:repeat(3,1fr)}
+  .ba-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:820px){
   .nav,.header-actions .btn-book-header{display:none}
@@ -451,6 +476,7 @@ footer ul a:hover{color:#E7CFA1}
   .form-2{grid-template-columns:1fr}
   .confirm-btns{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .ba-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
   .mobile-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-items:stretch;
     position:fixed;inset:auto 0 0 0;z-index:88;
     padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(251,248,243,.97);

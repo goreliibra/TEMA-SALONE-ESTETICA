@@ -34,6 +34,8 @@ const I18N = {
     sec_reviews: "Cosa dicono i clienti",
     sec_location: "Dove siamo",
     view_all: "Vedi tutto",
+    sec_beforeafter: "Prima / Dopo", sec_beforeafter_sub: "Trascina per vedere la trasformazione",
+    ba_before: "Prima", ba_after: "Dopo", nav_beforeafter: "Prima / Dopo",
 
     // why us
     why1_t: "Team professionale", why1_d: "Stylist qualificati e sempre aggiornati.",
@@ -129,6 +131,8 @@ const I18N = {
     sec_reviews: "Müşteriler ne diyor",
     sec_location: "Neredeyiz",
     view_all: "Tümünü gör",
+    sec_beforeafter: "Öncesi / Sonrası", sec_beforeafter_sub: "Dönüşümü görmek için kaydır",
+    ba_before: "Öncesi", ba_after: "Sonrası", nav_beforeafter: "Öncesi / Sonrası",
 
     why1_t: "Profesyonel ekip", why1_d: "Nitelikli ve güncel stilistler.",
     why2_t: "Kişiye özel danışmanlık", why2_d: "Başlamadan önce isteğini dinleriz.",
@@ -212,6 +216,8 @@ const I18N = {
     sec_team: "Our team",
     sec_team_sub: "Qualified professionals, each with their own specialty.",
     sec_gallery: "Our work",
+    sec_beforeafter: "Before / After", sec_beforeafter_sub: "Drag to see the transformation",
+    ba_before: "Before", ba_after: "After", nav_beforeafter: "Before / After",
     sec_reviews: "What clients say",
     sec_location: "Find us",
     view_all: "View all",

@@ -107,6 +107,8 @@
       <div class="center" style="margin-top:34px"><a href="#gallery" class="btn btn-ghost">${t("view_all")}</a></div>
     </div></section>
 
+    ${beforeAfterSection()}
+
     <section class="section"><div class="wrap">
       <div class="section-head center reveal"><span class="eyebrow">★★★★★</span><h2>${t("sec_reviews")}</h2></div>
       <div class="grid grid-2 reveal">${REVIEWS.map(revCard).join("")}</div>
@@ -259,6 +261,46 @@
       <span class="gal-fallback">${icon(g.icon || "sparkles")}<small>${L(g.alt)}</small></span>
       <figcaption>${L(g.alt)}</figcaption>
     </figure>`;
+  }
+  /* Before / After: interactive drag slider (pointer + touch).
+     Each pair: BEFORE_AFTER[].before / .after / .label{it,tr,en}. */
+  function baCard(b, i) {
+    return `<figure class="ba-slider" data-ba style="--pos:50%">
+      <img class="ba-img ba-after" src="${b.after}" alt="${L(b.label)} — ${t("ba_after")}" loading="lazy" decoding="async">
+      <img class="ba-img ba-before" src="${b.before}" alt="${L(b.label)} — ${t("ba_before")}" loading="lazy" decoding="async">
+      <span class="ba-tag ba-tag-before">${t("ba_before")}</span>
+      <span class="ba-tag ba-tag-after">${t("ba_after")}</span>
+      <div class="ba-handle" aria-hidden="true"><span>‹ ›</span></div>
+      <input class="ba-range" type="range" min="0" max="100" value="50"
+        aria-label="${L(b.label)} — ${t("sec_beforeafter_sub")}">
+      <figcaption class="ba-cap">${L(b.label)}</figcaption>
+    </figure>`;
+  }
+  function beforeAfterSection() {
+    if (!window.BEFORE_AFTER || !BEFORE_AFTER.length) return "";
+    return `<section class="section beige" id="beforeafter"><div class="wrap">
+      <div class="section-head center reveal"><span class="eyebrow">${t("sec_beforeafter")}</span>
+        <h2>${t("sec_beforeafter")}</h2><p>${t("sec_beforeafter_sub")}</p></div>
+      <div class="ba-grid reveal">${BEFORE_AFTER.map(baCard).join("")}</div>
+    </div></section>`;
+  }
+  function bindBeforeAfter() {
+    $$(".ba-slider").forEach(sl => {
+      const range = sl.querySelector(".ba-range");
+      const set = (v) => sl.style.setProperty("--pos", Math.max(0, Math.min(100, v)) + "%");
+      if (range) { range.addEventListener("input", e => set(+e.target.value)); }
+      // drag anywhere on the image to reveal (pointer = mouse + touch)
+      let drag = false;
+      const posFromEvent = (e) => {
+        const r = sl.getBoundingClientRect();
+        const x = (e.clientX != null ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0));
+        const pct = ((x - r.left) / r.width) * 100;
+        set(pct); if (range) range.value = Math.max(0, Math.min(100, pct));
+      };
+      sl.addEventListener("pointerdown", e => { if (e.target === range) return; drag = true; posFromEvent(e); });
+      sl.addEventListener("pointermove", e => { if (drag) posFromEvent(e); });
+      window.addEventListener("pointerup", () => { drag = false; });
+    });
   }
   function revCard(r) {
     const verified = r.source === "google"
@@ -526,6 +568,7 @@
     if (route === "book") { applyPreselect(); renderWizard(); }
     if (route === "services") bindAccordion();
     if (route === "gallery") bindGallery();
+    bindBeforeAfter();
     bindBookButtons();
     observeReveals();
     window.scrollTo({ top: 0 });
