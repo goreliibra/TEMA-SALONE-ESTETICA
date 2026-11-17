@@ -1,0 +1,7 @@
+# robots.txt — Estetica Modello
+# Rebrand: update the Sitemap URL to your real domain.
+# DEMO: sito dimostrativo con dati inventati → non va indicizzato.
+User-agent: *
+Disallow: /
+
+Sitemap: https://goreliibra.github.io/TEMA-SALONE-ESTETICA/sitemap.xml
