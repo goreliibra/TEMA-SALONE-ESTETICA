@@ -69,6 +69,7 @@ const CONFIG = {
 // DEMO: indirizzo inventato → la mappa e i pulsanti "Indicazioni" puntano solo alla città.
 const _addrQuery = encodeURIComponent(CONFIG.DEMO ? `${CONFIG.CITY}, ${CONFIG.COUNTRY}` : `${CONFIG.BUSINESS_NAME}, ${CONFIG.ADDRESS_LINE}, ${CONFIG.CITY}`);
 const _destQuery = encodeURIComponent(CONFIG.DEMO ? `${CONFIG.CITY}, ${CONFIG.COUNTRY}` : `${CONFIG.ADDRESS_LINE}, ${CONFIG.CITY}`);
+const _mapLang = () => (typeof LANG !== "undefined" && /^(it|tr|en)$/.test(LANG)) ? LANG : "it";
 const SALON = {
   name: CONFIG.BUSINESS_NAME,
   short: CONFIG.BUSINESS_SHORT,
@@ -85,10 +86,11 @@ const SALON = {
   email: CONFIG.EMAIL,
   instagram: CONFIG.INSTAGRAM,
   instagramUrl: CONFIG.DEMO ? "#demo-ig" : CONFIG.INSTAGRAM_URL,
-  // Google Maps (built from the address above)
-  mapsEmbed: `https://maps.google.com/maps?q=${_addrQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`,
-  mapsLink: `https://www.google.com/maps/search/?api=1&query=${_addrQuery}`,
-  directions: `https://www.google.com/maps/dir/?api=1&destination=${_destQuery}`,
+  // Google Maps (built from the address above). "hl" = lingua scelta sul sito (it/tr/en):
+  // senza, Google usa la lingua del browser del visitatore e la mappa non segue il sito.
+  get mapsEmbed() { return `https://maps.google.com/maps?q=${_addrQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed&hl=${_mapLang()}`; },
+  get mapsLink() { return `https://www.google.com/maps/search/?api=1&query=${_addrQuery}&hl=${_mapLang()}`; },
+  get directions() { return `https://www.google.com/maps/dir/?api=1&destination=${_destQuery}&hl=${_mapLang()}`; },
   geo: CONFIG.GEO
 };
 
